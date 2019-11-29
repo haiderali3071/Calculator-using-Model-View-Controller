@@ -36,7 +36,6 @@ public class CalculatorVIew {
     private JButton powerOf10 = new JButton("10ⁿ");
     private JButton sqrt2 = new JButton("²√x");
     private JButton sqrt3 = new JButton("³√x");
-    private JButton sqrtn = new JButton("ⁿ√×");
     private JButton ln = new JButton("ln");
     private JButton log10 = new JButton("log₁₀");
     private JButton oneOverX = new JButton("¹∕ᵪ");
@@ -51,14 +50,14 @@ public class CalculatorVIew {
     private JButton rand = new JButton("Rand");
     private JButton rad = new JButton("Rad");
     private JButton expValue = new JButton("e");
-    TextField value = new TextField("0",25);
+    TextField value = new TextField(25);
 
 
     public CalculatorVIew() {
 
         // frame in which we'll add a panel later
         frame = new JFrame();
-        Dimension dimension = new Dimension(675,300);
+        Dimension dimension = new Dimension(600,300);
         frame.setLayout(new BorderLayout());
         frame.setSize(dimension);
         frame.setMinimumSize(dimension);
@@ -94,7 +93,7 @@ public class CalculatorVIew {
         upperPanel.add(value,BorderLayout.CENTER);
 
         // left panel is a panel in which complex functionality buttons included
-        leftPanel = new JPanel(new GridLayout(5,5));
+        leftPanel = new JPanel(new GridLayout(5,4));
 
         // buttons added in left panel
         leftPanel.add(square);
@@ -104,7 +103,6 @@ public class CalculatorVIew {
         leftPanel.add(powerOf10);
         leftPanel.add(sqrt2);
         leftPanel.add(sqrt3);
-        leftPanel.add(sqrtn);
         leftPanel.add(ln);
         leftPanel.add(log10);
         leftPanel.add(oneOverX);
@@ -117,7 +115,6 @@ public class CalculatorVIew {
         leftPanel.add(tanh);
         leftPanel.add(pi);
         leftPanel.add(rand);
-        leftPanel.add(rad);
         leftPanel.add(expValue);
 
         // panel in which we add all panels
@@ -134,15 +131,12 @@ public class CalculatorVIew {
 
     }
 
-    public static void main(String a[]) {
-        CalculatorVIew calculatorVIew = new CalculatorVIew();
-    }
-    public Double getNumber() {
+    public double getNumber() {
         return Double.parseDouble(value.getText());
     }
 
-    public void setResult(Double value) {
-        this.value.setText(value.toString());
+    public void setResult(double value) {
+        this.value.setText(String.valueOf(value));
     }
 
     public void setACListner(ActionListener e) {
@@ -287,9 +281,6 @@ public class CalculatorVIew {
         this.sqrt3.addActionListener(e);
     }
 
-    public void setSqrtnListner(ActionListener e) {
-        this.sqrtn.addActionListener(e);
-    }
 
     public void setLnListner(ActionListener e) {
         this.ln.addActionListener(e);
@@ -307,5 +298,7 @@ public class CalculatorVIew {
         this.fact.addActionListener(e);
     }
 
-
+    public static void main(String a[]) {
+        CalculatorVIew calculatorVIew = new CalculatorVIew();
+    }
 }

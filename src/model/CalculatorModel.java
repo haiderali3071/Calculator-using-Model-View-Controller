@@ -1,40 +1,42 @@
 package model;
 
+import java.util.ArrayList;
+
 public class CalculatorModel {
 
     private double result = 0;
 
-    public double add(double ... v) {
+    public double add(ArrayList<Double> v) {
         double sum = 0;
-        for (int i=0; i<v.length; i++){
-            sum += v[i];
+        for (int i=0; i<v.size(); i++){
+            sum += v.get(i);
         }
         result = sum;
         return result;
     }
 
-    public double subtract(double ... v) {
-        double subtract = v[0];
-        for (int i=0; i<v.length -1; i++){
-            subtract -= v[i+1];
+    public double subtract(ArrayList<Double> v) {
+        double subtract = v.get(0);
+        for (int i=1; i<v.size(); i++){
+            subtract -= v.get(i);
         }
         result = subtract;
         return result;
     }
 
-    public double multiply(double ... v) {
+    public double multiply(ArrayList<Double> v) {
         double mul = 1;
-        for (int i=0; i<v.length; i++){
-            mul *= v[i];
+        for (int i=0; i<v.size(); i++){
+            mul *= v.get(i);
         }
         result = mul;
         return result;
     }
 
-    public double divide(double ... v) {
-        double div = v[0];
-        for (int i=1; i<v.length; i++){
-            div /= v[i];
+    public double divide(ArrayList<Double> v) {
+        double div = v.get(0);
+        for (int i=1; i<v.size(); i++){
+            div /= v.get(i);
         }
         result = div;
         return result;
@@ -134,17 +136,17 @@ public class CalculatorModel {
         return result;
     }
 
-    public double pi(){
+    public double getPi(){
         result = 3.14159265;
         return result;
     }
 
-    public double rand(double x) {
+    public double getRand() {
         result = Math.random();
         return result;
     }
 
-    public double expValue(){
+    public double getExpValue(){
         result = 2.71828182;
         return result;
     }

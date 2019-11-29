@@ -1,4 +1,5 @@
 package view;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -48,16 +49,14 @@ public class CalculatorView {
     private JButton tanh = new JButton("tanh");
     private JButton pi = new JButton("π");
     private JButton rand = new JButton("Rand");
-    private JButton rad = new JButton("Rad");
     private JButton expValue = new JButton("e");
-    TextField value = new TextField(25);
-
+    private JTextField textValue = new JTextField("0", 25);
 
     public CalculatorView() {
 
         // frame in which we'll add a panel later
         frame = new JFrame();
-        Dimension dimension = new Dimension(600,300);
+        Dimension dimension = new Dimension(600, 300);
         frame.setLayout(new BorderLayout());
         frame.setSize(dimension);
         frame.setMinimumSize(dimension);
@@ -65,7 +64,7 @@ public class CalculatorView {
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         // rightPanel is a panel in which simple functionality buttons included
-        rightPanel = new JPanel(new GridLayout(5,4));
+        rightPanel = new JPanel(new GridLayout(5, 4));
 
         // buttons added in right panel
         rightPanel.add(AC);
@@ -89,11 +88,13 @@ public class CalculatorView {
         rightPanel.add(equall);
 
         //upper panel is a panel in which we add text field
+        textValue.setBackground(Color.gray);
+        textValue.setForeground(Color.white);
         upperPanel = new JPanel(new BorderLayout());
-        upperPanel.add(value,BorderLayout.CENTER);
+        upperPanel.add(textValue, BorderLayout.CENTER);
 
         // left panel is a panel in which complex functionality buttons included
-        leftPanel = new JPanel(new GridLayout(5,4));
+        leftPanel = new JPanel(new GridLayout(5, 4));
 
         // buttons added in left panel
         leftPanel.add(square);
@@ -121,103 +122,123 @@ public class CalculatorView {
         panel = new JPanel(new BorderLayout());
 
         // all three panels added in a single panel
-        panel.add(upperPanel,BorderLayout.NORTH);
-        panel.add(leftPanel,BorderLayout.WEST);
-        panel.add(rightPanel,BorderLayout.EAST);
+        panel.add(upperPanel, BorderLayout.NORTH);
+        panel.add(leftPanel, BorderLayout.WEST);
+        panel.add(rightPanel, BorderLayout.EAST);
 
         // panel added in frame
-        frame.add(panel,BorderLayout.CENTER);
+        frame.add(panel, BorderLayout.CENTER);
         frame.setVisible(true);
 
     }
 
+    public void setACtoC() {
+        this.AC.setText("C");
+    }
+
+    public void setCtoAC() {
+        this.AC.setText("AC");
+    }
+
     public double getNumber() {
-        return Double.parseDouble(value.getText());
+        return Double.parseDouble(textValue.getText());
     }
 
     public void setNumber(double value) {
-        this.value.setText(String.valueOf(value));
+        int conciseValue = (int) value;
+        if (value - conciseValue == 0) {
+            this.textValue.setText(String.valueOf(conciseValue));
+        } else {
+            this.textValue.setText(String.valueOf(value));
+        }
     }
 
-    public void setText(String  value) {
-        this.value.setText(value);
+    public void setText(String value) {
+        this.textValue.setText(value);
+    }
+
+    public String getText() {
+        return this.textValue.getText();
     }
 
     public void setACListner(ActionListener e) {
         this.AC.addActionListener(e);
     }
 
-    public void setZeroListner(ActionListener e){
+    public void setZeroListner(ActionListener e) {
         this.zero.addActionListener(e);
     }
 
-    public void setOneListner(ActionListener e){
+    public void setOneListner(ActionListener e) {
         this.one.addActionListener(e);
     }
 
-    public void setTwoListner(ActionListener e){
+    public void setTwoListner(ActionListener e) {
         this.two.addActionListener(e);
     }
 
-    public void setThreeListner(ActionListener e){
+    public void setThreeListner(ActionListener e) {
         this.three.addActionListener(e);
     }
-    public void setFourListner(ActionListener e){
+
+    public void setFourListner(ActionListener e) {
         this.four.addActionListener(e);
     }
 
-    public void setFiveListner(ActionListener e){
+    public void setFiveListner(ActionListener e) {
         this.five.addActionListener(e);
     }
 
-    public void setSixListner(ActionListener e){
+    public void setSixListner(ActionListener e) {
         this.six.addActionListener(e);
     }
 
-    public void setSevenListner(ActionListener e){
+    public void setSevenListner(ActionListener e) {
         this.seven.addActionListener(e);
     }
-    public void setEightListner(ActionListener e){
+
+    public void setEightListner(ActionListener e) {
         this.eight.addActionListener(e);
     }
 
-    public void setNineListner(ActionListener e){
+    public void setNineListner(ActionListener e) {
         this.nine.addActionListener(e);
     }
 
-    public void setNegativeSignListner(ActionListener e){
+    public void setNegativeSignListner(ActionListener e) {
         this.negativeSign.addActionListener(e);
     }
 
-    public void setPercentageListner(ActionListener e){
+    public void setPercentageListner(ActionListener e) {
         this.percentage.addActionListener(e);
     }
 
-    public void setAddListner(ActionListener e){
+    public void setAddListner(ActionListener e) {
         this.add.addActionListener(e);
     }
 
-    public void setSubtractListner(ActionListener e){
+    public void setSubtractListner(ActionListener e) {
         this.subtract.addActionListener(e);
     }
 
-    public void setMultiplyListner(ActionListener e){
+    public void setMultiplyListner(ActionListener e) {
         this.multiply.addActionListener(e);
     }
 
-    public void setDivideListner(ActionListener e){
+    public void setDivideListner(ActionListener e) {
         this.divide.addActionListener(e);
     }
 
-    public void setDotListner(ActionListener e){
+    public void setDotListner(ActionListener e) {
         this.dot.addActionListener(e);
     }
 
-    public void setEquallListner(ActionListener e){
+    public void setEquallListner(ActionListener e) {
         this.equall.addActionListener(e);
     }
 
-    public void setSquareListner(ActionListener e){
+
+    public void setSquareListner(ActionListener e) {
         this.square.addActionListener(e);
     }
 
@@ -251,10 +272,6 @@ public class CalculatorView {
 
     public void setRandListner(ActionListener e) {
         this.rand.addActionListener(e);
-    }
-
-    public void setRadListner(ActionListener e) {
-        this.rad.addActionListener(e);
     }
 
     public void setExpListner(ActionListener e) {
@@ -294,7 +311,7 @@ public class CalculatorView {
         this.log10.addActionListener(e);
     }
 
-    public void setOneOverXListner(ActionListener e) {
+    public void setReciprocalListner(ActionListener e) {
         this.oneOverX.addActionListener(e);
     }
 
@@ -302,7 +319,4 @@ public class CalculatorView {
         this.fact.addActionListener(e);
     }
 
-    public static void main(String a[]) {
-        CalculatorView calculatorVIew = new CalculatorView();
-    }
 }

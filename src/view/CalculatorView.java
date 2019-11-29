@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class CalculatorVIew {
+public class CalculatorView {
 
     private JFrame frame;
     private JPanel panel;
@@ -53,7 +53,7 @@ public class CalculatorVIew {
     TextField value = new TextField(25);
 
 
-    public CalculatorVIew() {
+    public CalculatorView() {
 
         // frame in which we'll add a panel later
         frame = new JFrame();
@@ -135,8 +135,12 @@ public class CalculatorVIew {
         return Double.parseDouble(value.getText());
     }
 
-    public void setResult(double value) {
+    public void setNumber(double value) {
         this.value.setText(String.valueOf(value));
+    }
+
+    public void setText(String  value) {
+        this.value.setText(value);
     }
 
     public void setACListner(ActionListener e) {
@@ -299,6 +303,6 @@ public class CalculatorVIew {
     }
 
     public static void main(String a[]) {
-        CalculatorVIew calculatorVIew = new CalculatorVIew();
+        CalculatorView calculatorVIew = new CalculatorView();
     }
 }
